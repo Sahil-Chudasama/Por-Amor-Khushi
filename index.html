@@ -232,6 +232,44 @@
             0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
+
+        /* Birthday Video Pulse Button Styling */
+        .video-btn-container {
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .birthday-video-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff2a5f, #ff758f);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        .birthday-video-btn:hover {
+            transform: scale(1.05);
+            color: #ffffff;
+        }
+        
+        /* Glowing Pulse Keyframe */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 42, 95, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 18px rgba(255, 42, 95, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 42, 95, 0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -285,6 +323,13 @@
                 <div class="vinyl-center"></div>
             </div>
             <button id="music-button">Tap Me to Start the Music 🎵</button>
+        </div>
+
+        <!-- Birthday Video Button -->
+        <div class="video-btn-container">
+            <a href="https://drive.google.com/file/d/1H7zEDI8VW3qYud47HkJFPph27oV0AjAz/view?usp=drive_link" target="_blank" class="birthday-video-btn">
+                A Special Birthday Surprise For You 🎁🎥💖
+            </a>
         </div>
 
         <p class="message-p">You are the best decision my heart ever made 🌸<br>
