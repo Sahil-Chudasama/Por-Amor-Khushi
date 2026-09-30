@@ -20,7 +20,7 @@
             background: linear-gradient(135deg, var(--bg-light) 0%, #ffe4e1 100%);
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            padding: 30px 15px;
+            padding: 20px 10px;
             min-height: 100vh;
             overflow-x: hidden;
             display: flex;
@@ -35,7 +35,7 @@
             background-repeat: no-repeat;
             background-blend-mode: overlay;
             border-radius: 25px;
-            padding: 35px 25px;
+            padding: 25px 15px;
             max-width: 650px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(255, 42, 95, 0.25);
@@ -44,61 +44,61 @@
         }
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             color: var(--primary-color);
             text-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
             margin-bottom: 5px;
         }
         #typed-message {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #555;
             min-height: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 600;
         }
 
-        /* Option A: Heart Badges & Glowing Counter */
+        /* Mobile-Optimized Counter Section */
         .counter-box {
             background: rgba(255, 255, 255, 0.45);
             border: 2px solid rgba(255, 42, 95, 0.4);
             border-radius: 20px;
             padding: 14px 6px;
-            margin: 20px 0;
+            margin: 15px 0;
             box-shadow: 0 8px 25px rgba(255, 42, 95, 0.2);
             backdrop-filter: blur(8px);
+            width: 100%;
         }
         .counter-title {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--primary-color);
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
         .timer {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             gap: 4px;
+            width: 100%;
         }
         .time-unit {
             background: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 6px 4px;
             flex: 1;
-            mix-width: 62px;
+            max-width: 62px;
             box-shadow: 0 4px 10px rgba(255, 42, 95, 0.15);
             border: 1px solid rgba(255, 117, 143, 0.3);
             position: relative;
             transition: transform 0.3s ease;
-        }
-        .time-unit:hover {
-            transform: translateY(-3px);
         }
         .time-unit span:first-child {
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--primary-color);
             display: block;
+            line-height: 1.2;
         }
         .time-unit span:last-child {
             font-size: 0.65rem;
@@ -108,10 +108,10 @@
         }
         .time-unit::after {
             content: "💖";
-            font-size: 10px;
+            font-size: 9px;
             position: absolute;
-            top: -6px;
-            right: -4px;
+            top: -5px;
+            right: -2px;
             animation: pulse-heart 1.5s infinite alternate;
         }
         @keyframes pulse-heart {
@@ -121,7 +121,7 @@
 
         /* Photo Flip Cards */
         .gallery-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--primary-color);
             margin: 15px 0 10px 0;
             font-weight: 700;
@@ -129,13 +129,13 @@
         .cards-grid {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 25px;
+            gap: 10px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
         .flip-card {
-            width: 120px;
-            height: 140px;
+            width: 110px;
+            height: 130px;
             perspective: 1000px;
             cursor: pointer;
         }
@@ -162,7 +162,7 @@
             align-items: center;
             justify-content: center;
             padding: 8px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
         }
         .flip-card-front {
@@ -180,12 +180,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            margin-top: 15px;
+            gap: 10px;
+            margin-top: 10px;
         }
         .vinyl-container {
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: repeating-radial-gradient(
                 circle,
@@ -202,20 +202,20 @@
             position: relative;
         }
         .vinyl-center {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             background: var(--primary-color);
             border-radius: 50%;
             border: 2px solid white;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
+            font-size: 11px;
             box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
         }
         .vinyl-center::after {
             content: "🎵";
-            font-size: 12px;
+            font-size: 11px;
         }
         .spinning {
             animation: spin 3s linear infinite;
@@ -226,10 +226,10 @@
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: white;
             border: none;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
             transition: all 0.3s ease;
@@ -240,17 +240,17 @@
 
         /* Birthday Video Pulse Button Styling */
         .video-btn-container {
-            margin-top: 25px;
-            margin-bottom: 15px;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
         .birthday-video-btn {
             display: inline-block;
             background: linear-gradient(45deg, #ff2a5f, #ff758f);
             color: #ffffff;
             text-decoration: none;
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: 50px;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -262,22 +262,22 @@
         }
         @keyframes pulse-glow {
             0% { box-shadow: 0 0 0 0 rgba(255, 42, 95, 0.7); }
-            70% { box-shadow: 0 0 0 18px rgba(255, 42, 95, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 42, 95, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 42, 95, 0); }
         }
 
-        /* Secret Love Letter Styling (Caveat Font) */
+        /* Transparent Secret Love Letter Styling */
         .envelope-container {
-            margin-top: 20px;
+            margin-top: 15px;
             margin-bottom: 10px;
         }
         .envelope-btn {
             background: linear-gradient(135deg, #ff758f, #ff4d6d);
             color: white;
             border: none;
-            padding: 12px 28px;
+            padding: 10px 24px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
@@ -291,16 +291,17 @@
             display: none;
             background: rgba(255, 250, 240, 0.85);
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border: 2px dashed #ff758f;
             border-radius: 18px;
-            padding: 22px;
+            padding: 18px;
             margin-top: 15px;
             text-align: left;
             box-shadow: 0 8px 20px rgba(255, 42, 95, 0.15);
             animation: fadeIn 0.5s ease-in-out;
             font-family: 'Caveat', cursive;
-            font-size: 1.45rem;
-            line-height: 1.6;
+            font-size: 1.4rem;
+            line-height: 1.5;
             color: #333;
         }
         @keyframes fadeIn {
@@ -309,9 +310,9 @@
         }
         .secret-note-box h4 {
             color: #ff2a5f;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             text-align: center;
-            font-size: 1.75rem;
+            font-size: 1.6rem;
         }
 
         /* Floating Hearts */
@@ -335,9 +336,9 @@
         <h1>💖 I Love You Khushi 💖</h1>
         <div id="typed-message"></div>
 
-        <!-- Relationship Timer (Glowing Hearts Badge Upgrade) -->
+        <!-- Relationship Timer (Mobile Optimized) -->
         <div class="counter-box">
-            <div class="counter-title">Together Since 31 July 2025 💕</div>
+            <div class="counter-title">Together Since 31st July 2025 💕</div>
             <div class="timer">
                 <div class="time-unit"><span id="days">0</span><span>Days</span></div>
                 <div class="time-unit"><span id="hours">0</span><span>Hours</span></div>
@@ -352,7 +353,7 @@
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 1 👀</div>
-                    <div class="flip-card-back">Whenever I looked at you, you would blush 💖</div>
+                    <div class="flip-card-back">Whenever I looked at you and you would blush 💖</div>
                 </div>
             </div>
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
@@ -390,7 +391,7 @@
             </a>
         </div>
 
-        <!-- Secret Love Note (Integrated 6 Lines Letter) -->
+        <!-- Secret Love Note -->
         <div class="envelope-container">
             <button class="envelope-btn" onclick="toggleSecretNote()">
                 ✉️ Tap to Open Secret Note 💌
@@ -400,7 +401,7 @@
                 <p>
                     You are the best decision my heart ever made. I love you more than words can ever capture, and you are my always. Every single day talking with you feels like a beautiful fairy tale dream come true. 🧚✨ Thank you for being my smile and my favorite person in the whole world. No matter where life takes us, my heart will always belong to you.
                 </p>
-                <p style="text-align: right; font-weight: bold; margin-top: 15px; color: #ff2a5f;">
+                <p style="text-align: right; font-weight: bold; margin-top: 12px; color: #ff2a5f;">
                     Forever Yours,<br>Sahil ❤️
                 </p>
             </div>
@@ -435,7 +436,7 @@
                 if (!isPlaying) {
                     audio.play().then(() => {
                         vinyl.classList.add('spinning');
-                        musicButton.innerText = "Pause Music ⏸️️";
+                        musicButton.innerText = "Pause Music ⏸";
                         isPlaying = true;
                         confetti({
                             particleCount: 80,
