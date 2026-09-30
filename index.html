@@ -273,47 +273,61 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 42, 95, 0); }
         }
 
-        /* Fullscreen Video Popup (Modal) Styling */
+        /* Responsive Video Popup Modal Styling */
         .video-modal {
             display: none;
             position: fixed;
-            z-index: 9999;
+            z-index: 99999;
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.88);
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             backdrop-filter: blur(8px);
         }
         .video-modal-content {
             position: relative;
             width: 90%;
-            max-width: 700px;
+            max-width: 420px; /* Laptop aur Phone dono ke liye ideal size */
             background: #000;
-            border-radius: 15px;
-            overflow: hidden;
+            border-radius: 20px;
+            padding: 8px;
             box-shadow: 0 0 25px rgba(255, 42, 95, 0.6);
+            border: 2px solid #ff2a5f;
+            margin: auto;
         }
         .video-modal video {
             width: 100%;
+            height: auto;
+            max-height: 70vh;
             display: block;
-            border-radius: 15px;
+            border-radius: 14px;
+            object-fit: contain;
         }
         .close-modal-btn {
             position: absolute;
-            top: -45px;
-            right: 0;
-            color: #fff;
-            font-size: 32px;
+            top: -18px;
+            right: -12px;
+            background: #ff2a5f;
+            color: #ffffff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 22px;
             font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transition: color 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            border: 2px solid #ffffff;
+            z-index: 100001;
         }
         .close-modal-btn:hover {
-            color: var(--primary-color);
+            transform: scale(1.1);
+            background: #e01e4f;
         }
 
         /* Secret Love Letter Styling */
@@ -434,9 +448,9 @@
             <button id="music-button">Tap Me to Start the Music 🎵</button>
         </div>
 
-        <!-- Birthday Video Button (Modal Popup Trigger) -->
+        <!-- Birthday Video Button (No href link, direct onclick trigger) -->
         <div class="video-btn-container">
-            <button class="birthday-video-btn" onclick="openVideoModal()">
+            <button type="button" class="birthday-video-btn" onclick="openVideoModal()">
                 A Special Birthday Surprise For You 🎁🎥💖
             </button>
         </div>
@@ -452,17 +466,17 @@
                     You are the best decision my heart ever made. I love you more than words can ever capture. Every single day talking with you feels like a beautiful fairy tale dream come true. 🧚✨ Thank you for being my smile and my favorite person in the whole world. No matter where life takes us, my heart will always belong to you.
                 </p>
                 <p style="text-align: right; font-weight: bold; margin-top: 12px; color: #ff2a5f;">
-                    Forever Yours,<br>Sahil ❤️
+                    Forever Yours,<br>Sahil ❤️️
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Fullscreen Video Modal Popup -->
+    <!-- Video Modal Popup -->
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
-            <span class="close-modal-btn" onclick="closeVideoModal()">&times;</span>
-            <video id="popupVideo" controls preload="metadata">
+            <div class="close-modal-btn" onclick="closeVideoModal()">&times;</div>
+            <video id="popupVideo" controls playsinline preload="metadata">
                 <source src="birthday_video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -556,13 +570,17 @@
             }
         }
 
-        // 6. Video Modal Popup Controls
+        // 6. Video Modal Popup Controls & Back Button Fix
         const videoModal = document.getElementById("videoModal");
         const popupVideo = document.getElementById("popupVideo");
         const romanticAudio = document.getElementById("romantic-song");
 
         function openVideoModal() {
             videoModal.style.display = "flex";
+            
+            // Push history state so phone's back button closes modal instead of leaving page
+            history.pushState({ modalOpen: true }, "");
+
             // Pause background audio when video plays
             if (romanticAudio && !romanticAudio.paused) {
                 romanticAudio.pause();
@@ -578,10 +596,22 @@
             popupVideo.currentTime = 0;
         }
 
+        // Handle phone back button press to close video instead of exiting site
+        window.addEventListener('popstate', function(event) {
+            if (videoModal.style.display === "flex") {
+                videoModal.style.display = "none";
+                popupVideo.pause();
+                popupVideo.currentTime = 0;
+            }
+        });
+
         // Close modal if user clicks outside video box
         window.onclick = function(event) {
             if (event.target == videoModal) {
                 closeVideoModal();
+                if (window.history.state && window.history.state.modalOpen) {
+                    window.history.back();
+                }
             }
         }
     </script>
