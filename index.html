@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Por-Amor-Khushi❤️</title>
+    <title>Por-Amor-Khushi❤️️</title>
 
     <!-- Social Media Link Share Preview Control -->
     <meta property="title" content="Por-Amor-Khushi ❤️">
@@ -56,6 +56,10 @@
             text-shadow: 0 0 10px rgba(255, 42, 95, 0.2);
             margin-bottom: 5px;
         }
+        .heart-icon {
+            display: inline-block;
+            animation: pulse-heart 1.5s infinite alternate;
+        }
         #typed-message {
             font-size: 1.1rem;
             color: #555;
@@ -93,32 +97,23 @@
             border-radius: 10px;
             padding: 6px 4px;
             flex: 1;
-            max-width: 62px;
+            max-width: 75px;
             box-shadow: 0 4px 10px rgba(255, 42, 95, 0.15);
             border: 1px solid rgba(255, 117, 143, 0.3);
             position: relative;
-            transition: transform 0.3s ease;
         }
         .time-unit span:first-child {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary-color);
             display: block;
             line-height: 1.2;
         }
         .time-unit span:last-child {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #555;
             font-weight: 600;
             text-transform: uppercase;
-        }
-        .time-unit::after {
-            content: "💖";
-            font-size: 9px;
-            position: absolute;
-            top: -5px;
-            right: -2px;
-            animation: pulse-heart 1.5s infinite alternate;
         }
         @keyframes pulse-heart {
             0% { transform: scale(0.9); }
@@ -290,7 +285,7 @@
         .video-modal-content {
             position: relative;
             width: 90%;
-            max-width: 420px; /* Laptop aur Phone dono ke liye ideal size */
+            max-width: 420px;
             background: #000;
             border-radius: 20px;
             padding: 8px;
@@ -397,14 +392,15 @@
 </head>
 <body>
     <div class="content-box">
-        <h1>💖 I Love You Khushi 💖</h1>
+        <h1>I <span class="heart-icon">❤️</span> U KHUSHI</h1>
         <div id="typed-message"></div>
 
         <!-- Relationship Timer -->
         <div class="counter-box">
-            <div class="counter-title">TOGETHER SINCE 31<span style="text-transform: lowercase;">st</span> JULY 2025 💕</div>
+            <div class="counter-title" id="counter-title">TOGETHER SINCE 31<span style="text-transform: lowercase;">st</span> JULY 2025 💕</div>
             <div class="timer">
-                <div class="time-unit"><span id="days">0</span><span>Days</span></div>
+                <div class="time-unit"><span id="years">0</span><span>Years</span></div>
+                <div class="time-unit"><span id="months">0</span><span>Months</span></div>
                 <div class="time-unit"><span id="hours">0</span><span>Hours</span></div>
                 <div class="time-unit"><span id="minutes">0</span><span>Mins</span></div>
                 <div class="time-unit"><span id="seconds">0</span><span>Secs</span></div>
@@ -448,7 +444,7 @@
             <button id="music-button">Tap Me to Start the Music 🎵</button>
         </div>
 
-        <!-- Birthday Video Button (No href link, direct onclick trigger) -->
+        <!-- Birthday Video Button -->
         <div class="video-btn-container">
             <button type="button" class="birthday-video-btn" onclick="openVideoModal()">
                 A Special Birthday Surprise For You 🎁🎥💖
@@ -466,7 +462,7 @@
                     You are the best decision my heart ever made. I love you more than words can ever capture. Every single day talking with you feels like a beautiful fairy tale dream come true. 🧚✨ Thank you for being my smile and my favorite person in the whole world. No matter where life takes us, my heart will always belong to you.
                 </p>
                 <p style="text-align: right; font-weight: bold; margin-top: 12px; color: #ff2a5f;">
-                    Forever Yours,<br>Sahil ❤️️
+                    Forever Yours,<br>Sahil ❤
                 </p>
             </div>
         </div>
@@ -528,15 +524,34 @@
                 }
             });
 
-            // 3. Relationship Counter (Date: 31 July 2025, 6:30 PM)
+            // 3. Relationship Counter (Years, Months, Hours, Mins, Secs)
             const startDate = new Date("2025-07-31T18:30:00");
             function updateTimer() {
                 const now = new Date();
-                const diff = now - startDate;
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                document.getElementById("minutes").innerText = Math.floor((diff / (1000 * 60)) % 60);
-                document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
+                
+                let years = now.getFullYear() - startDate.getFullYear();
+                let months = now.getMonth() - startDate.getMonth();
+                let days = now.getDate() - startDate.getDate();
+                
+                if (days < 0) {
+                    months--;
+                    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                    days += prevMonth.getDate();
+                }
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+
+                const hours = Math.floor((now - startDate) / (1000 * 60 * 60)) % 24;
+                const minutes = Math.floor((now - startDate) / (1000 * 60)) % 60;
+                const seconds = Math.floor((now - startDate) / 1000) % 60;
+
+                document.getElementById("years").innerText = years;
+                document.getElementById("months").innerText = months;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
             }
             setInterval(updateTimer, 1000);
             updateTimer();
@@ -577,11 +592,8 @@
 
         function openVideoModal() {
             videoModal.style.display = "flex";
-            
-            // Push history state so phone's back button closes modal instead of leaving page
             history.pushState({ modalOpen: true }, "");
 
-            // Pause background audio when video plays
             if (romanticAudio && !romanticAudio.paused) {
                 romanticAudio.pause();
                 document.getElementById('vinyl').classList.remove('spinning');
@@ -596,7 +608,6 @@
             popupVideo.currentTime = 0;
         }
 
-        // Handle phone back button press to close video instead of exiting site
         window.addEventListener('popstate', function(event) {
             if (videoModal.style.display === "flex") {
                 videoModal.style.display = "none";
@@ -605,7 +616,6 @@
             }
         });
 
-        // Close modal if user clicks outside video box
         window.onclick = function(event) {
             if (event.target == videoModal) {
                 closeVideoModal();
