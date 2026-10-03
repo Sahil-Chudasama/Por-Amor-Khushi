@@ -103,6 +103,13 @@
             cursor: default;
         }
 
+        .lock-subtext {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            transition: opacity 0.3s ease;
+        }
+
         .lock-hint {
             font-size: 0.85rem;
             color: #94a3b8;
@@ -167,7 +174,6 @@
             font-weight: 600;
         }
 
-        /* Success Message Positioned Perfectly in Center */
         .lock-message.success {
             color: #4ade80;
             font-size: 1.5rem;
@@ -569,7 +575,7 @@
         <div class="lock-card">
             <h2 id="lock-title">🔊 Turn your volume UP </h2>
             <button id="audio-trigger-btn" class="audio-trigger-btn" onclick="startSuspenseAudio()">Click Here 🎧</button>
-            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">Enter the emoji to unlock your surprise 🎁</p>
+            <p id="lock-subtext" class="lock-subtext">Enter the emoji to unlock your surprise 🎁</p>
             <div id="lock-hint" class="lock-hint">Hint: Our favorite emoji 🤫</div>
             <div id="lock-inputs" class="lock-input-group">
                 <input type="text" id="emoji-input" class="lock-input" placeholder="Paste emoji here..." autofocus>
@@ -711,6 +717,7 @@
                 // 2. Hide lock screen inputs
                 document.getElementById("lock-title").classList.add("hide-content");
                 audioBtn.classList.add("hide-content");
+                document.getElementById("lock-subtext").classList.add("hide-content");
                 document.getElementById("lock-hint").classList.add("hide-content");
                 document.getElementById("lock-inputs").classList.add("hide-content");
 
