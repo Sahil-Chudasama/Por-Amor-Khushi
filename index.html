@@ -35,14 +35,14 @@
             align-items: center;
         }
 
-        /* --- Lock Screen Overlay Styles --- */
+        /* --- Dark Neutral Lock Screen Overlay --- */
         #lock-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #ffe4e1 0%, #fff0f5 100%);
+            background: #0f172a;
             z-index: 999999;
             display: flex;
             justify-content: center;
@@ -52,29 +52,63 @@
         }
 
         .lock-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 42, 95, 0.3);
-            border-radius: 25px;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             padding: 35px 20px;
             max-width: 420px;
             width: 100%;
-            box-shadow: 0 15px 35px rgba(255, 42, 95, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .lock-card h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 1.1rem;
+            color: #f8fafc;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .audio-trigger-btn {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .audio-trigger-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .audio-trigger-btn.playing {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            border-color: #4ade80;
+            cursor: default;
         }
 
         .lock-hint {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 25px;
-            font-weight: 500;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
         }
 
         .lock-input-group {
@@ -82,6 +116,8 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            width: 100%;
+            transition: opacity 0.3s ease;
         }
 
         .lock-input {
@@ -90,28 +126,29 @@
             padding: 12px 15px;
             font-size: 1.4rem;
             text-align: center;
-            border: 2px solid #ffb3c1;
+            border: 1px solid #334155;
             border-radius: 50px;
             outline: none;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
+            background: #1e293b;
+            color: #ffffff;
         }
 
         .lock-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 12px rgba(255, 42, 95, 0.3);
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
         }
 
         .lock-btn {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(45deg, #3b82f6, #06b6d4);
             color: white;
             border: none;
             padding: 12px 35px;
             border-radius: 50px;
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 42, 95, 0.4);
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
             transition: transform 0.2s ease;
         }
 
@@ -120,26 +157,38 @@
         }
 
         .lock-message {
-            margin-top: 18px;
-            font-size: 0.95rem;
-            font-weight: 600;
+            margin-top: 15px;
             min-height: 24px;
         }
 
         .lock-message.error {
-            color: #d90429;
+            color: #f87171;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
+        /* Success Message Positioned Perfectly in Center */
         .lock-message.success {
-            color: #2b9348;
-            font-size: 1.3rem; /* Dynamic and larger text size */
+            color: #4ade80;
+            font-size: 1.5rem;
             font-weight: 700;
+            position: absolute;
+            width: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 0;
         }
 
-        /* Shake Animation for Wrong Password */
+        .hide-content {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
         .shake {
             animation: shake 0.4s ease-in-out;
-            border-color: #d90429 !important;
+            border-color: #f87171 !important;
         }
 
         @keyframes shake {
@@ -153,10 +202,10 @@
             visibility: hidden;
         }
 
-        /* --- Main Page Styles --- */
+        /* --- Main Webpage Styling --- */
         .content-box {
             background-color: rgba(255, 255, 255, 0.70);
-            background-image: url('khushi_photo.jpg');
+            background-image: url('romantic_bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -202,7 +251,6 @@
             font-weight: 600;
         }
 
-        /* Mobile-Optimized Counter Section */
         .counter-box {
             background: rgba(255, 255, 255, 0.45);
             border: 2px solid rgba(255, 42, 95, 0.4);
@@ -250,7 +298,6 @@
             text-transform: uppercase;
         }
 
-        /* Photo Flip Cards */
         .gallery-title {
             font-size: 0.95rem;
             color: var(--primary-color);
@@ -306,7 +353,6 @@
             transform: rotateY(180deg);
         }
 
-        /* Music Section & Vinyl */
         .music-section {
             display: flex;
             flex-direction: column;
@@ -369,7 +415,6 @@
             transform: scale(1.05);
         }
 
-        /* Birthday Video Pulse Button Styling */
         .video-btn-container {
             margin-top: 20px;
             margin-bottom: 10px;
@@ -398,7 +443,6 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 42, 95, 0); }
         }
 
-        /* Responsive Video Popup Modal Styling */
         .video-modal {
             display: none;
             position: fixed;
@@ -455,7 +499,6 @@
             background: #e01e4f;
         }
 
-        /* Secret Love Letter Styling */
         .envelope-container {
             margin-top: 15px;
             margin-bottom: 10px;
@@ -504,7 +547,6 @@
             font-size: 1.6rem;
         }
 
-        /* Floating Hearts */
         .heart {
             position: fixed;
             color: var(--secondary-color);
@@ -522,12 +564,13 @@
 </head>
 <body>
 
-    <!-- Lock Screen Overlay -->
+    <!-- Dark Neutral Lock Screen Overlay -->
     <div id="lock-screen">
         <div class="lock-card">
-            <h2>Enter the emoji to unlock your surprise 🎁</h2>
-            <div class="lock-hint">Hint: Our favorite emoji 🤫</div>
-            <div class="lock-input-group">
+            <h2 id="lock-title">🔊 Turn your volume UP & guess the secret emoji</h2>
+            <button id="audio-trigger-btn" class="audio-trigger-btn" onclick="startSuspenseAudio()">Click Here 🎧</button>
+            <div id="lock-hint" class="lock-hint">Hint: Our favorite emoji 🤫</div>
+            <div id="lock-inputs" class="lock-input-group">
                 <input type="text" id="emoji-input" class="lock-input" placeholder="Paste emoji here..." autofocus>
                 <button type="button" class="lock-btn" onclick="checkEmoji()">Unlock ✨</button>
             </div>
@@ -535,12 +578,11 @@
         </div>
     </div>
 
-    <!-- Main Content Box -->
+    <!-- Main Romantic Content Box -->
     <div class="content-box">
-        <h1>For <span class="heart-icon">❤️</span> KHUSHI</h1>
+        <h1>For Khushi <span class="heart-icon">❤️</span> </h1>
         <div id="typed-message"></div>
 
-        <!-- Relationship Timer -->
         <div class="counter-box">
             <div class="counter-title" id="counter-title">TOGETHER SINCE 31<span style="text-transform: lowercase;">st</span> JULY 2025 💕</div>
             <div class="timer">
@@ -552,7 +594,6 @@
             </div>
         </div>
 
-        <!-- Flip Cards -->
         <div class="gallery-title">Tap Cards to Reveal Memories 📸</div>
         <div class="cards-grid">
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
@@ -564,13 +605,13 @@
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 2 💃</div>
-                    <div class="flip-card-back">Playing Dodhiya Together 💃✨</div>
+                    <div class="flip-card-back">Playing Dodhiya Together 💃</div>
                 </div>
             </div>
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 3 🍫</div>
-                    <div class="flip-card-back">When you fed me 5-Star 🍫 with your own hands ✨</div>
+                    <div class="flip-card-back">When you fed me 5-Star 🍫 with your own hands </div>
                 </div>
             </div>
             <div class="flip-card" onclick="this.classList.toggle('flipped')">
@@ -581,7 +622,6 @@
             </div>
         </div>
 
-        <!-- Music Player -->
         <div class="music-section">
             <div class="vinyl-container" id="vinyl">
                 <div class="vinyl-center"></div>
@@ -589,14 +629,12 @@
             <button id="music-button">Tap Me to Start the Music 🎵</button>
         </div>
 
-        <!-- Birthday Video Button -->
         <div class="video-btn-container">
             <button type="button" class="birthday-video-btn" onclick="openVideoModal()">
-                A Special Birthday Surprise For You 🎁🎥💖
+                A Special Birthday Surprise For You 🎁🎥
             </button>
         </div>
 
-        <!-- Secret Love Note -->
         <div class="envelope-container">
             <button class="envelope-btn" onclick="toggleSecretNote()">
                 ✉️ Tap to Open Secret Note 💌
@@ -607,13 +645,12 @@
                     You are the best decision my heart ever made. I love you more than words can ever capture. Every single day talking with you feels like a beautiful fairy tale dream come true. 🧚✨ Thank you for being my smile and my favorite person in the world. No matter where life takes us, my heart will always belong to you.
                 </p>
                 <p style="text-align: right; font-weight: bold; margin-top: 12px; color: #ff2a5f;">
-                    Forever Yours,<br>Sahil ❤
+                    Forever Yours,<br>Sahil 🥰
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Video Modal Popup -->
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
             <div class="close-modal-btn" onclick="closeVideoModal()">&times;</div>
@@ -624,7 +661,8 @@
         </div>
     </div>
 
-    <!-- Audio File -->
+    <!-- Audio Elements -->
+    <audio id="suspense-song" src="suspense_audio.mp3" loop preload="auto"></audio>
     <audio id="romantic-song" src="audio.mp3" loop preload="auto"></audio>
 
     <script>
@@ -633,13 +671,28 @@
         const lockScreen = document.getElementById("lock-screen");
         const emojiInput = document.getElementById("emoji-input");
         const lockMsg = document.getElementById("lock-msg");
+        const suspenseAudio = document.getElementById("suspense-song");
+        const audioBtn = document.getElementById("audio-trigger-btn");
 
-        // Focus automatically on input load
         window.addEventListener("load", function() {
             emojiInput.focus();
         });
 
-        // Enter key support
+        // First click/tap anywhere or on button triggers suspense audio
+        function startSuspenseAudio() {
+            if (suspenseAudio.paused) {
+                suspenseAudio.play().then(() => {
+                    audioBtn.innerText = "Playing Audio... 🎶";
+                    audioBtn.classList.add("playing");
+                }).catch(e => console.log("Audio play blocked:", e));
+            }
+        }
+
+        // Auto trigger audio if user clicks inside the input box directly
+        emojiInput.addEventListener("focus", function() {
+            startSuspenseAudio();
+        });
+
         emojiInput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 checkEmoji();
@@ -650,34 +703,41 @@
             const enteredValue = emojiInput.value.trim();
 
             if (enteredValue === correctEmoji) {
-                // Correct Emoji Handling
-                lockMsg.className = "lock-message success";
-                lockMsg.innerText = "You got it! 🥳";
+                // 1. Suspense audio immediate stop
+                suspenseAudio.pause();
+                suspenseAudio.currentTime = 0;
 
-                // Confetti Burst
+                // 2. Hide lock screen inputs
+                document.getElementById("lock-title").classList.add("hide-content");
+                audioBtn.classList.add("hide-content");
+                document.getElementById("lock-hint").classList.add("hide-content");
+                document.getElementById("lock-inputs").classList.add("hide-content");
+
+                // 3. Center success message
+                lockMsg.className = "lock-message success";
+                lockMsg.innerText = "You got it! 🥳🎉";
+
+                // 4. Trigger Confetti
                 confetti({
                     particleCount: 120,
                     spread: 80,
                     origin: { y: 0.6 },
-                    colors: ['#ff2a5f', '#ff758f', '#ffffff']
+                    colors: ['#ff2a5f', '#ff758f', '#38bdf8', '#ffffff']
                 });
 
-                // Fade-out Lock Screen transition
+                // 5. Open Main Page after delay
                 setTimeout(() => {
                     lockScreen.classList.add("fade-out");
-                }, 700);
+                }, 1200);
 
             } else {
-                // Wrong Emoji Handling
                 lockMsg.className = "lock-message error";
                 lockMsg.innerText = "Wrong emoji! Try again... 😜";
                 
-                // Trigger Shake Animation
                 emojiInput.classList.remove("shake");
-                void emojiInput.offsetWidth; // Force Reflow
+                void emojiInput.offsetWidth;
                 emojiInput.classList.add("shake");
 
-                // Clear input field for next try
                 emojiInput.value = "";
                 emojiInput.focus();
             }
@@ -685,7 +745,6 @@
 
         // --- Main Webpage Scripts ---
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Typing Effect
             const textToType = "💍 Forever & Always 💍";
             const element = document.getElementById("typed-message");
             let i = 0;
@@ -698,7 +757,6 @@
             }
             setTimeout(typeWriter, 500);
 
-            // 2. Music & Vinyl Spinning
             const audio = document.getElementById('romantic-song');
             const musicButton = document.getElementById('music-button');
             const vinyl = document.getElementById('vinyl');
@@ -725,7 +783,6 @@
                 }
             });
 
-            // 3. Relationship Counter
             const startDate = new Date("2025-07-31T18:30:00");
             function updateTimer() {
                 const now = new Date();
@@ -757,10 +814,9 @@
             setInterval(updateTimer, 1000);
             updateTimer();
 
-            // 4. Floating Hearts
             function createHeart() {
                 const heart = document.createElement("div");
-                const symbols = ["❤️️", "💖", "✨", "🌸", "💕"];
+                const symbols = ["❤️", "💖", "✨", "🌸", "💕"];
                 const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
                 const duration = Math.random() * 4 + 5;
 
@@ -776,7 +832,6 @@
             setInterval(createHeart, 300);
         });
 
-        // 5. Toggle Secret Love Note Function
         function toggleSecretNote() {
             var note = document.getElementById("secretNote");
             if (note.style.display === "none" || note.style.display === "") {
@@ -786,7 +841,6 @@
             }
         }
 
-        // 6. Video Modal Popup Controls
         const videoModal = document.getElementById("videoModal");
         const popupVideo = document.getElementById("popupVideo");
         const romanticAudio = document.getElementById("romantic-song");
