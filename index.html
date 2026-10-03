@@ -567,8 +567,9 @@
     <!-- Dark Neutral Lock Screen Overlay -->
     <div id="lock-screen">
         <div class="lock-card">
-            <h2 id="lock-title">🔊 Turn your volume UP & guess the secret emoji</h2>
+            <h2 id="lock-title">🔊 Turn your volume UP </h2>
             <button id="audio-trigger-btn" class="audio-trigger-btn" onclick="startSuspenseAudio()">Click Here 🎧</button>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">Enter the emoji to unlock your surprise 🎁</p>
             <div id="lock-hint" class="lock-hint">Hint: Our favorite emoji 🤫</div>
             <div id="lock-inputs" class="lock-input-group">
                 <input type="text" id="emoji-input" class="lock-input" placeholder="Paste emoji here..." autofocus>
@@ -662,7 +663,7 @@
     </div>
 
     <!-- Audio Elements -->
-    <audio id="suspense-song" src="suspense_audio.mpeg" loop preload="auto"></audio>
+    <audio id="suspense-song" src="suspense_audio.mp3" loop preload="auto"></audio>
     <audio id="romantic-song" src="audio.mp3" loop preload="auto"></audio>
 
     <script>
