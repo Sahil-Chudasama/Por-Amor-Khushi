@@ -691,12 +691,13 @@
         function startSuspenseAudio() {
             if (suspenseAudio.paused) {
                 suspenseAudio.play().then(() => {
-                    audioBtn.innerText = "Pause Audio ⏸️";
+                    audioBtn.innerText = "Stop Music ⏹️";
                     audioBtn.classList.add("playing");
                 }).catch(e => console.log("Audio play blocked:", e));
             } else {
                 suspenseAudio.pause();
-                audioBtn.innerText = "Click Here 🎧";
+                suspenseAudio.currentTime = 0; 
+                audioBtn.innerText = "Play Music 🎧";
                 audioBtn.classList.remove("playing");
             }
         }
