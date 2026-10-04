@@ -695,10 +695,6 @@
             }
         }
 
-        // Auto trigger audio if user clicks inside the input box directly
-        emojiInput.addEventListener("focus", function() {
-            startSuspenseAudio();
-        });
 
         emojiInput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
@@ -740,7 +736,7 @@
 
             } else {
                 lockMsg.className = "lock-message error";
-                lockMsg.innerText = "Wrong emoji! Think again... 😏";
+                lockMsg.innerText = "HaaHaa.. Think Again.. 😏";
                 
                 emojiInput.classList.remove("shake");
                 void emojiInput.offsetWidth;
