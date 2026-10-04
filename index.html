@@ -687,13 +687,17 @@
             emojiInput.focus();
         });
 
-        // First click/tap anywhere or on button triggers suspense audio
+        
         function startSuspenseAudio() {
             if (suspenseAudio.paused) {
                 suspenseAudio.play().then(() => {
-                    audioBtn.innerText = "Playing Audio... 🎶";
+                    audioBtn.innerText = "Pause Audio ⏸️";
                     audioBtn.classList.add("playing");
                 }).catch(e => console.log("Audio play blocked:", e));
+            } else {
+                suspenseAudio.pause();
+                audioBtn.innerText = "Click Here 🎧";
+                audioBtn.classList.remove("playing");
             }
         }
 
