@@ -602,28 +602,28 @@
                 <div class="time-unit"><span id="seconds">0</span><span>Secs</span></div>
             </div>
         </div>
-
+        
         <div class="gallery-title">Tap Cards to Reveal Memories 📸</div>
         <div class="cards-grid">
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 1 👀</div>
                     <div class="flip-card-back">Whenever I looked at you and you would blush 💖</div>
                 </div>
             </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 2 💃</div>
                     <div class="flip-card-back">Playing Dodhiya Together 💃</div>
                 </div>
             </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 3 🍫</div>
                     <div class="flip-card-back">When you fed me 5-Star 🍫 with your own hands </div>
                 </div>
             </div>
-            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+            <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">Memory 4 😤</div>
                     <div class="flip-card-back">Whenever you get cute-angry at me "😤😤"</div>
@@ -841,6 +841,22 @@
                 setTimeout(() => heart.remove(), duration * 1000);
             }
             setInterval(createHeart, 300);
+        });
+
+        // Accordion Logic for Memory Cards
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const isAlreadyFlipped = this.classList.contains('flipped');
+
+                // Pehle saare cards se 'flipped' class hata do (close kar do)
+                flipCards.forEach(c => c.classList.remove('flipped'));
+
+                // Agar clicked card pehle se flipped nahi tha, to use flip kar do
+                if (!isAlreadyFlipped) {
+                    this.classList.add('flipped');
+                }
+            });
         });
 
         function toggleSecretNote() {
