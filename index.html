@@ -580,7 +580,7 @@
             <h2 id="lock-title">Meanwhile, enjoy the music 🎶 </h2>
             <button id="audio-trigger-btn" class="audio-trigger-btn" onclick="startSuspenseAudio()">Click Here 🎧</button>
             <p id="lock-subtext" class="lock-subtext">Enter the emoji to unlock your surprise 🎁</p>
-            <div id="lock-hint" class="lock-hint">Hint: "Your most-used reaction... <span style="font-size: 1.3rem; display: inline-block; vertical-align: middle;">🤫</span>"</div>
+            <div id="lock-hint" class="lock-hint">Hint: "Our most-used reaction... <span style="font-size: 1.3rem; display: inline-block; vertical-align: middle;">🤫</span>"</div>
             <div id="lock-inputs" class="lock-input-group">
                 <input type="text" id="emoji-input" class="lock-input" placeholder="Enter Emoji here..." autocomplete="off" autofocus>
                 <button type="button" class="lock-btn" onclick="checkEmoji()">Unlock ✨</button>
@@ -791,7 +791,7 @@
                 } else {
                     audio.pause();
                     vinyl.classList.remove('spinning');
-                    musicButton.innerText = "Tap Me to Start the Music 🎵";
+                    musicButton.innerText = "Play Your Special Song 🎵";
                     isPlaying = false;
                 }
             });
